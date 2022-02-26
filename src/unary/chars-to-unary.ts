@@ -51,8 +51,7 @@ export const toUnary = (chars: string) => {
   const binary = binaryStrings.join('');
 
   const re = /(0+)|(1+)/g;
-  const matches = binary.matchAll(re);
-  const groups = [...matches].map((m) => m[0]);
+  const groups = binary.match(re) || [];
 
   const unaryGroups = groups.map((binary) => {
     const digit = binary.charAt(0);
