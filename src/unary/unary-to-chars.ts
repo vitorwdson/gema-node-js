@@ -55,7 +55,7 @@ export const toChars = (unary: string) => {
 
   const charsInBinary = binaryString.match(/.{7}/g) || [];
   const charCodes = charsInBinary.map((binary) => parseInt(binary, 2));
-  const chars = charCodes.map((charCode) => String.fromCharCode(charCode));
+  const finalString = String.fromCharCode(...charCodes);
 
-  return chars.join('');
+  return finalString;
 };
