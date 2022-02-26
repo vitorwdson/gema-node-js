@@ -40,6 +40,6 @@
  *     E.g. String.fromCharCode(67) = 'C'
  */
 
-export const toChars = unary => {
-  // ???
+export const toChars = (unary: string) => {
+  console.log();
 };

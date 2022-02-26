@@ -42,9 +42,6 @@
  *
  */
 
-export const toUnary = chars => {
-  for (let i = 0; i < chars.length; i++) {
-    const charCode = charCode(chars.charAt(i));
-    console.log
-  // ???
+export const toUnary = (chars: string) => {
+  console.log();
 };
