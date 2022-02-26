@@ -41,5 +41,21 @@
  */
 
 export const toChars = (unary: string) => {
-  console.log();
+  const re = /0+\s0+/g;
+  const unaryGroups = unary.match(re) || [];
+
+  const binaryGroups = unaryGroups.map((unaryString) => {
+    const [digitIndicator, quantityIndicator] = unaryString.split(' ');
+    const digit = digitIndicator === '0' ? '1' : '0';
+    const length = quantityIndicator.length;
+
+    return ''.padStart(length, digit);
+  });
+  const binaryString = binaryGroups.join('');
+
+  const charsInBinary = binaryString.match(/.{7}/g) || [];
+  const charCodes = charsInBinary.map((binary) => parseInt(binary, 2));
+  const chars = charCodes.map((charCode) => String.fromCharCode(charCode));
+
+  return chars.join('');
 };
