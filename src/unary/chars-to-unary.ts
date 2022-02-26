@@ -42,6 +42,28 @@
  *
  */
 
+const charTo7BitString = (c: string) => {
+  return c.charCodeAt(0).toString(2).padStart(7, '0');
+};
+
 export const toUnary = (chars: string) => {
-  console.log();
+  const binaryStrings = [...chars].map(charTo7BitString);
+  const binary = binaryStrings.join('');
+
+  const re = /(0+)|(1+)/g;
+  const matches = binary.matchAll(re);
+  const groups = [...matches].map((m) => m[0]);
+
+  const unaryGroups = groups.map((binary) => {
+    const digit = binary.charAt(0);
+    const length = binary.length;
+
+    const digitIndicator = digit === '1' ? '0' : '00';
+    const quantityIndicator = ''.padStart(length, '0');
+
+    return `${digitIndicator} ${quantityIndicator}`;
+  });
+  const unaryString = unaryGroups.join(' ');
+
+  return unaryString;
 };
